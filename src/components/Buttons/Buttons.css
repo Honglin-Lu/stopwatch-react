@@ -1,0 +1,16 @@
+.buttons {
+  display: flex;
+  color: #fefdff;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* padding-right: 15px; */
+}
+
+.buttons span {
+  font-size: 80px;
+  font-weight: 100;
+  font-family: myFont;
+}
+.dot-right {
+  color: #49494c;
+}

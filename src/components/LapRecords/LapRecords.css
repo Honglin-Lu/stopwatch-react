@@ -1,0 +1,13 @@
+.lap-records-container {
+  margin-top: 20px;
+  height: 400px;
+  margin-right: 2px;
+  overflow-y: auto;
+  /* padding-right: 13px; */
+}
+
+.lap-records {
+  margin-top: 0;
+  padding-left: 0;
+  border-top: 1px solid #242024;
+}

@@ -1,0 +1,9 @@
+.btnLap {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid black;
+  color: #fefdff;
+  background-color: #1f1c22;
+  outline: #1f1c22 solid 2px;
+}

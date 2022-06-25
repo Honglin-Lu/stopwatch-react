@@ -1,0 +1,10 @@
+.timer {
+  margin-top: 100px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #fefdff;
+  font-size: 80px;
+  font-family: SF-Pro-Text-Thin;
+  font-variant-numeric: tabular-nums;
+  /* padding-right: 15px; */
+}
