@@ -3,14 +3,21 @@ import { Button } from '../Button/Button.jsx';
 import './Buttons.css';
 
 export function Buttons() {
+  const [leftButtonText, setLeftButtonText] = useState('Lap');
+  const [rightButtonText, setRightButtonText] = useState('Start');
+
+  const startTimer = () => {
+    setLeftButtonText('Reset');
+    setRightButtonText('Stop');
+  };
+
   return (
     <div className="buttons">
-      {/* <Button>{leftButtonText}</Button> */}
-      <Button />
+      <Button title={leftButtonText} />
       <p>
         <span>.</span> <span className="dot-right">.</span>
       </p>
-      <Button></Button>
+      <Button title={rightButtonText} operation={startTimer} />
     </div>
   );
 }
