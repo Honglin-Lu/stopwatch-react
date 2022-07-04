@@ -6,3 +6,20 @@
   color: #fefdff;
   margin: 15px auto;
 }
+.lap-records-container {
+  margin-top: 20px;
+  height: 400px;
+  margin-right: 2px;
+  overflow-y: auto;
+  /* padding-right: 13px; */
+
+  /* Set a line background*/
+  background-image: linear-gradient(#242024 1px, transparent 1px);
+  background-size: 100% 45px;
+}
+
+.lap-records {
+  margin-top: 0;
+  padding-left: 0;
+  border-top: 1px solid #242024;
+}

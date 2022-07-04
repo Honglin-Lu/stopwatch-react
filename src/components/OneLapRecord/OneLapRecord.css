@@ -1,0 +1,9 @@
+.oneLapRecord {
+  list-style: none;
+  border-bottom: 1px solid #242024;
+  line-height: 44px;
+  font-family: SF-Pro-Text-Thin;
+  display: flex;
+  justify-content: space-between;
+  font-variant-numeric: tabular-nums;
+}

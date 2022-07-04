@@ -2,26 +2,38 @@
 import { useEffect, useState } from 'react';
 import './Buttons.css';
 
-export function Buttons({ handleElapsedTime }) {
+export function Buttons({ handleElapsedTime, handleLapElapsedTime, handleCounter, addLiElement }) {
   const [leftButtonText, setLeftButtonText] = useState('Lap');
   const [rightButtonText, setRightButtonText] = useState('Start');
   const [startTime, setStartTime] = useState();
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [totalLapTime, setTotalLapTime] = useState(0);
+  const [lapTime, setLapTime] = useState(0);
+  const [lapTimeArray, setLapTimeArray] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     let timerInterval = null;
     if (isRunning) {
-      timerInterval = setTimeout(() => {
-        // eslint-disable-next-line no-lone-blocks
-        {
-          handleElapsedTime(Date.now() - startTime + elapsedTime);
-        }
+      timerInterval = setInterval(() => {
+        handleElapsedTime(Date.now() - startTime + elapsedTime);
+        handleLapElapsedTime(Date.now() - startTime + elapsedTime - totalLapTime);
       }, 1000 / 60);
     }
-    return () => clearTimeout(timerInterval);
+    return () => {
+      clearTimeout(timerInterval);
+    };
   });
+  useEffect(() => {
+    handleCounter(counter + 1);
+  }, [counter, handleCounter]);
+
   const startTimer = () => {
+    if (counter === 0) {
+      setCounter(counter + 1);
+      addLiElement();
+    }
     setIsRunning(true);
     setLeftButtonText('Lap');
     setRightButtonText('Stop');
@@ -39,14 +51,22 @@ export function Buttons({ handleElapsedTime }) {
     setIsRunning(false);
     setLeftButtonText('Lap');
     setRightButtonText('Start');
+    setCounter(0);
     setElapsedTime(0);
-    // eslint-disable-next-line no-lone-blocks
-    {
-      handleElapsedTime(0);
-    }
+    handleElapsedTime(0);
   };
 
-  const lapTimer = () => {};
+  const addLap = (elapsedTime) => {
+    setLapTime(Date.now() - startTime + elapsedTime - totalLapTime);
+    setLapTimeArray((lapTimeArray) => [...lapTimeArray, lapTime]);
+    setTotalLapTime(totalLapTime + lapTime);
+  };
+
+  const lapTimer = () => {
+    addLap(elapsedTime);
+    setCounter(counter + 1);
+    addLiElement();
+  };
 
   return (
     <div className="buttons">
