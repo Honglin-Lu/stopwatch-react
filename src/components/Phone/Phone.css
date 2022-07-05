@@ -2,7 +2,7 @@
   width: 390px;
   height: 800px;
   background-color: #020003;
-  padding: 15px 15px 15px 15px;
+  padding: 15px 0 15px 15px;
   color: #fefdff;
   margin: 15px auto;
 }
@@ -11,11 +11,7 @@
   height: 400px;
   margin-right: 2px;
   overflow-y: auto;
-  /* padding-right: 13px; */
-
-  /* Set a line background*/
-  background-image: linear-gradient(#242024 1px, transparent 1px);
-  background-size: 100% 45px;
+  padding-right: 13px;
 }
 
 .lap-records {
@@ -28,7 +24,7 @@
   color: #fefdff;
   justify-content: space-between;
   align-items: flex-end;
-  /* padding-right: 15px; */
+  padding-right: 15px;
 }
 
 .buttons span {
@@ -68,4 +64,12 @@
   color: #d43b36;
   background-color: #350e0e;
   outline: #350e0e solid 2px;
+}
+
+.btnStart:hover,
+.btnStop:hover,
+.btnLap:hover,
+.btnReset:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

@@ -17,7 +17,7 @@ export function LapRecords(props) {
     );
   });
   return (
-    <div className="lap-records-container">
+    <div className="lap-records-container scroll">
       <ul className="lap-records">
         {props.counter > 0 && (
           <li className="oneLapRecord">
