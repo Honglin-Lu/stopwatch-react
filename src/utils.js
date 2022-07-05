@@ -2,7 +2,7 @@ const padTo2Digits = (num) => {
   return num.toString().padStart(2, '0');
 };
 
-const displayTime = (milliSeconds) => {
+const formatTime = (milliSeconds) => {
   let minutes = Math.floor(milliSeconds / 60000);
   let seconds = Math.floor((milliSeconds % 60000) / 1000);
   let centiSeconds = Math.floor(((milliSeconds % 60000) % 1000) / 10);
@@ -10,4 +10,4 @@ const displayTime = (milliSeconds) => {
   return `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}.${padTo2Digits(centiSeconds)}`;
 };
 
-export { displayTime };
+export { formatTime };

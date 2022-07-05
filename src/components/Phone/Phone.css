@@ -23,3 +23,49 @@
   padding-left: 0;
   border-top: 1px solid #242024;
 }
+.buttons {
+  display: flex;
+  color: #fefdff;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* padding-right: 15px; */
+}
+
+.buttons span {
+  font-size: 80px;
+  font-weight: 100;
+  font-family: myFont;
+}
+.dot-right {
+  color: #49494c;
+}
+.btnLap,
+.btnReset {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid black;
+  color: #fefdff;
+  background-color: #1f1c22;
+  outline: #1f1c22 solid 2px;
+}
+
+.btnStart {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid black;
+  color: #3db85d;
+  background-color: #0b2a14;
+  outline: #0b2a14 solid 2px;
+}
+
+.btnStop {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid black;
+  color: #d43b36;
+  background-color: #350e0e;
+  outline: #350e0e solid 2px;
+}

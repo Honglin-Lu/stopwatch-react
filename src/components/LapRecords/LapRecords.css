@@ -1,0 +1,34 @@
+.lap-records-container {
+  margin-top: 20px;
+  height: 400px;
+  margin-right: 2px;
+  overflow-y: auto;
+  /* padding-right: 13px; */
+
+  /* Set a line background*/
+  background-image: linear-gradient(#242024 1px, transparent 1px);
+  background-size: 100% 45px;
+}
+
+.lap-records {
+  margin-top: 0;
+  padding-left: 0;
+  border-top: 1px solid #242024;
+}
+
+.oneLapRecord {
+  list-style: none;
+  border-bottom: 1px solid #242024;
+  line-height: 44px;
+  font-family: SF-Pro-Text-Thin;
+  display: flex;
+  justify-content: space-between;
+  font-variant-numeric: tabular-nums;
+}
+
+.max {
+  color: #d43b36;
+}
+.min {
+  color: #3db85d;
+}

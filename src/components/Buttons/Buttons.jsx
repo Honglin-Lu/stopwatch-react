@@ -22,7 +22,7 @@ export function Buttons({ handleElapsedTime, handleLapElapsedTime, handleCounter
       }, 1000 / 60);
     }
     return () => {
-      clearTimeout(timerInterval);
+      clearInterval(timerInterval);
     };
   });
   useEffect(() => {
