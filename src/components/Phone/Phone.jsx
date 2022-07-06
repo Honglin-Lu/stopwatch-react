@@ -5,12 +5,9 @@ import { formatTime } from '../../utils';
 import { LapRecords } from '../LapRecords/LapRecords';
 export function Phone() {
   const [time, setTime] = useState(0);
-  const [leftButtonText, setLeftButtonText] = useState('Lap');
-  const [rightButtonText, setRightButtonText] = useState('Start');
   const [startTime, setStartTime] = useState();
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [totalLapTime, setTotalLapTime] = useState(0);
   const [lapTime, setLapTime] = useState(0);
   const [lapTimeArray, setLapTimeArray] = useState([]);
   const [counter, setCounter] = useState(0);
@@ -19,66 +16,61 @@ export function Phone() {
     let timerInterval = null;
     if (isRunning) {
       timerInterval = setInterval(() => {
-        setTime(Date.now() - startTime + elapsedTime);
-        setLapTime(Date.now() - startTime + elapsedTime - totalLapTime);
+        const timeNow = Date.now();
+        setTime(timeNow - startTime + elapsedTime);
+        setLapTime(timeNow - startTime + elapsedTime - lapTimeArray.reduce((a, b) => a + b, 0));
       }, 1000 / 60);
     }
+
     return () => {
       clearInterval(timerInterval);
     };
-  });
+  }, [isRunning, startTime, elapsedTime, lapTimeArray]);
 
   const startTimer = () => {
     if (counter === 0) {
-      setCounter(counter + 1);
+      setCounter((prevCounter) => prevCounter + 1);
     }
     setIsRunning(true);
-    setLeftButtonText('Lap');
-    setRightButtonText('Stop');
     setStartTime(Date.now());
   };
 
   const stopTimer = () => {
     setIsRunning(false);
-    setLeftButtonText('Reset');
-    setRightButtonText('Start');
     setElapsedTime(elapsedTime + Date.now() - startTime);
   };
 
   const resetTimer = () => {
     setIsRunning(false);
-    setLeftButtonText('Lap');
-    setRightButtonText('Start');
     setTime(0);
     setCounter(0);
     setElapsedTime(0);
-    setTotalLapTime(0);
     setLapTimeArray([]);
   };
 
   const addLap = (elapsedTime) => {
+    let totalLapTime = lapTimeArray.reduce((a, b) => a + b, 0);
     setLapTime(Date.now() - startTime + elapsedTime - totalLapTime);
     setLapTimeArray((lapTimeArray) => [lapTime, ...lapTimeArray]);
-    setTotalLapTime(totalLapTime + lapTime);
   };
 
   const lapTimer = () => {
     addLap(elapsedTime);
-    setCounter(counter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
   };
 
   return (
     <div className="phone-container">
       <Timer time={formatTime(time)}></Timer>
       <div className="buttons">
-        <button className={'btn' + leftButtonText} onClick={leftButtonText === 'Reset' ? resetTimer : lapTimer}>
-          {leftButtonText}
+        <button className={isRunning ? 'Lap' : 'Reset'} onClick={!isRunning ? resetTimer : lapTimer}>
+          {isRunning ? 'Lap' : 'Reset'}
         </button>
         <p>
           <span>.</span> <span className="dot-right">.</span>
         </p>
-        <button className={'btn' + rightButtonText} onClick={rightButtonText === 'Start' ? startTimer : stopTimer}>
-          {rightButtonText}
+        <button className={isRunning ? 'Stop' : 'Start'} onClick={!isRunning ? startTimer : stopTimer}>
+          {isRunning ? 'Stop' : 'Start'}
         </button>
       </div>
       <LapRecords lapTime={formatTime(lapTime)} counter={counter} lapTimeArray={lapTimeArray}></LapRecords>

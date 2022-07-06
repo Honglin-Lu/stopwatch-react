@@ -1,6 +1,5 @@
 import './LapRecords.css';
 import { formatTime } from '../../utils';
-//import { OneLapRecord } from '../OneLapRecord/OneLapRecord.jsx';
 export function LapRecords(props) {
   const lapRecords = props.lapTimeArray;
   let maxLapIndex = lapRecords.length >= 2 ? lapRecords.indexOf(Math.max(...lapRecords)) : -1;
@@ -8,7 +7,6 @@ export function LapRecords(props) {
   const items = lapRecords.map((value, index) => {
     let maxLapStyle = maxLapIndex === index ? 'max' : '';
     let minLapStyle = minLapIndex === index ? 'min' : '';
-    console.log(maxLapIndex, minLapIndex);
     return (
       <li className={'oneLapRecord ' + maxLapStyle + minLapStyle} key={lapRecords.length - index}>
         <span>Lap {lapRecords.length - index}</span>
@@ -21,7 +19,7 @@ export function LapRecords(props) {
       <ul className="lap-records">
         {props.counter > 0 && (
           <li className="oneLapRecord">
-            <span>Lap {props.counter}</span>
+            <span>Lap {lapRecords.length + 1}</span>
             <span>{props.lapTime}</span>
           </li>
         )}

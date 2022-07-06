@@ -35,8 +35,8 @@
 .dot-right {
   color: #49494c;
 }
-.btnLap,
-.btnReset {
+.Lap,
+.Reset {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -46,7 +46,7 @@
   outline: #1f1c22 solid 2px;
 }
 
-.btnStart {
+.Start {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -56,7 +56,7 @@
   outline: #0b2a14 solid 2px;
 }
 
-.btnStop {
+.Stop {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -66,10 +66,10 @@
   outline: #350e0e solid 2px;
 }
 
-.btnStart:hover,
-.btnStop:hover,
-.btnLap:hover,
-.btnReset:hover {
+.Start:hover,
+.Stop:hover,
+.Lap:hover,
+.Reset:hover {
   cursor: pointer;
   opacity: 0.8;
 }
